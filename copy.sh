@@ -36,8 +36,8 @@ print_color() {
     printf "%b%s%b\n" "$1" "$2" "$CLEAR"
 }
 
-# Check if dpkg is installed (use to check if Debian or Ubuntu or based distros)
-if command -v dpkg &> /dev/null; then
+# Check os-release for Debian or Ubuntu based distribution
+if grep -q '^\(ID_LIKE\|ID\)=.*\(debian\|ubuntu\)' /etc/os-release; then
 	printf "\n%.0s" {1..1}
     print_color $WARNING "
     █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
